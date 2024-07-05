@@ -1,13 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
 ---
 
 <Layout title="Flowslate">
   <Header />
   <main>
-    <section class="pt-48 bg-white">
+    <section class="py-28 bg-white">
       <div class="container">
         <div class="max-w-screen-sm">
           <h1 class="mb-6">Explore the library</h1>
@@ -16,21 +17,18 @@ import Card from "../components/Card.astro";
             varius enim in eros elementum tristique.
           </p>
         </div>
-      </div>
-    </section>
-    <section class="py-6">
-      <div class="container">
         <input
           type="text"
           placeholder="Search for a component"
           class="border border-zinc-300 p-4 rounded-lg w-full mb-4"
         />
         <div class="grid grid-cols-3 gap-4">
-          <Card title="Testing" />
-          <Card title="Testing" />
-          <Card title="Testing" />
+          <Card title="Component1" />
+          <Card title="Component2" />
+          <Card title="Component3" />
         </div>
       </div>
     </section>
   </main>
+  <Footer />
 </Layout>
