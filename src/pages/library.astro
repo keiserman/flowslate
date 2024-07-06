@@ -20,10 +20,10 @@ const components = await Astro.glob("./library/*.md");
           placeholder="Search for a component"
           class="border border-zinc-300 p-4 rounded-lg w-full mb-4"
         />
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {
             components.map((component) => (
-              <Card title={component.frontmatter.title} />
+              <Card title={component.frontmatter.title} url={component.url} />
             ))
           }
         </div>

@@ -1,13 +1,37 @@
 ---
-const { title } = Astro.props;
+const { title, url } = Astro.props;
 ---
 
-<div class="p-4 border border-zinc-300 rounded-lg hover:shadow-sm transition">
+<div
+  class="p-4 border bg-white border-zinc-300 rounded-lg hover:shadow-sm transition"
+>
   <img src="" alt="" class="aspect-video bg-zinc-100 mb-4 rounded-md" />
   <div class="text-2xl mb-3">
     {title}
   </div>
-  <div class="flex items-center">
-    <a href="/" class="button">Copy this component</a>
+  <div class="flex gap-2">
+    <a href={url} class="button grow text-center">Copy this component</a>
+    <a href={url} class="button"
+      ><svg
+        class="w-4 h-full"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+        ><rect width="256" height="256" fill="none"></rect><path
+          d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"></path><circle
+          cx="128"
+          cy="128"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"></circle></svg
+      ></a
+    >
   </div>
 </div>
