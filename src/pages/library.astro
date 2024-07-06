@@ -1,12 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import Card from "../components/Card.astro";
+const components = await Astro.glob("./library/*.md");
 ---
 
 <Layout title="Flowslate">
-  <Header />
   <main>
     <section class="py-28 bg-white">
       <div class="container">
@@ -22,13 +20,14 @@ import Card from "../components/Card.astro";
           placeholder="Search for a component"
           class="border border-zinc-300 p-4 rounded-lg w-full mb-4"
         />
-        <div class="grid grid-cols-3 gap-4">
-          <Card title="Component1" />
-          <Card title="Component2" />
-          <Card title="Component3" />
+        <div class="grid grid-cols-2 gap-4">
+          {
+            components.map((component) => (
+              <Card title={component.frontmatter.title} />
+            ))
+          }
         </div>
       </div>
     </section>
   </main>
-  <Footer />
 </Layout>
