@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.css";
 import "@fontsource-variable/dm-sans";
 
 interface Props {
@@ -27,3 +26,32 @@ const { title } = Astro.props;
     <Footer />
   </body>
 </html>
+<style is:global>
+  h1 {
+    @apply text-4xl md:text-5xl font-semibold;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+
+  .padding-global {
+    @apply px-[5%];
+  }
+
+  .container {
+    @apply max-w-screen-lg m-auto;
+  }
+
+  .section {
+    @apply md:py-32 py-14;
+  }
+
+  .nav-link {
+    @apply text-zinc-600 hover:text-zinc-900;
+  }
+
+  .icon {
+    @apply size-10 p-2 bg-zinc-200 dark:text-zinc-300 dark:bg-zinc-800 rounded-md;
+  }
+</style>

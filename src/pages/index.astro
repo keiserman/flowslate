@@ -1,22 +1,101 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Home">
-  <section class="py-28 bg-white">
-    <div class="container">
-      <div class="max-w-screen-sm m-auto text-center mb-28">
-        <h1 class="mb-6">Clean slate for your next webflow project</h1>
-        <p class="mb-8 text-xl text-zinc-600">
-          Kickstart your Webflow projects with a collection of clean, unstyled
-          components. Copy, paste, and build faster—your clean slate is here.
-        </p>
-        <div class="flex items-center justify-center gap-3">
-          <a href="/components" class="button is-primary">Sign up for free</a>
-          <a href="/components" class="button">Explore the library</a>
+  <section class="section">
+    <div class="padding-global">
+      <div class="container">
+        <div class="max-w-2xl m-auto text-center">
+          <h1 class="mb-6">Clean slate for your next webflow project</h1>
+          <p class="mb-8 text-base text-zinc-600">
+            Kickstart your Webflow projects with a collection of clean, unstyled
+            components. Copy, paste, and build faster—your clean slate is here.
+          </p>
+          <div class="flex items-center justify-center gap-3">
+            <Button text="Sign up for free" />
+            <Button text="Explore the Library" variant="secondary" />
+          </div>
         </div>
       </div>
-      <img src="" alt="" class="bg-zinc-100 aspect-video rounded-lg" />
+    </div>
+  </section>
+  <section>
+    <div class="padding-global">
+      <div
+        class="container grid md:grid-cols-2 grid-cols-1 items-center gap-6 p-10 bg-zinc-50 rounded-lg"
+      >
+        <div class="flex flex-col gap-6 items-start">
+          <h2>A Faster Way to Build</h2>
+          <p class="text-base text-zinc-600">
+            FlowSlate gives you access to a comprehensive, searchable library of
+            essential Webflow components like navbars, hero sections, grids,
+            sliders, footers, and more. All components follow Finsweet’s
+            Client-First class structure, ensuring a seamless development
+            experience from start to finish.
+          </p>
+          <Button text="Learn more" variant="secondary" />
+        </div>
+        <img
+          src=""
+          alt=""
+          class="aspect-square w-full h-full bg-zinc-100 rounded-md"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="padding-global">
+      <div class="container grid gap-14">
+        <div class="text-center grid gap-6">
+          <h2>Features Built for Speed and Flexibility</h2>
+          <p class="text-base text-zinc-600 max-w-xl m-auto">
+            Our unstyled components, powerful search feature, and Client-First
+            structure make it simple to build faster, more organized Webflow
+            sites.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 grid-cols-1 gap-6">
+          <div
+            class="p-6 border border-zinc-300 rounded-lg flex flex-col gap-4"
+          >
+            <Icon name="ph:paint-brush" class="icon" />
+            <div class="text-lg font-semibold">
+              Minimal Styling, Maximum Flexibility
+            </div>
+            <p class="text-base text-zinc-600">
+              Each component is designed with minimal styling, giving you full
+              creative freedom. Start with a clean foundation, then customize to
+              match your brand.
+            </p>
+          </div>
+          <div
+            class="p-6 border border-zinc-300 rounded-lg flex flex-col gap-4"
+          >
+            <Icon name="ph:magnifying-glass" class="icon" />
+            <div class="text-lg font-semibold">Search and Filter with Ease</div>
+            <p class="text-base text-zinc-600">
+              Quickly find exactly what you need. FlowSlate’s searchable library
+              and filters help you browse components efficiently, so you can
+              spend less time searching and more time building.
+            </p>
+          </div>
+          <div
+            class="p-6 border border-zinc-300 rounded-lg flex flex-col gap-4"
+          >
+            <Icon name="ph:code" class="icon" />
+            <div class="text-lg font-semibold">Built for Client-First</div>
+            <p class="text-base text-zinc-600">
+              Every component follows Finsweet’s Client-First class naming
+              convention, so it’s easy to integrate into your projects without
+              missing a beat.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

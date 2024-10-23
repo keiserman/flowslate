@@ -1,4 +1,6 @@
 ---
+import Button from "./Button.astro";
+
 const { title, url } = Astro.props;
 ---
 
@@ -10,7 +12,7 @@ const { title, url } = Astro.props;
     {title}
   </div>
   <div class="flex gap-2">
-    <a href={url} class="button grow text-center">Copy this component</a>
+    <Button text="Copy this component" variant="secondary" />
     <a href={url} class="button"
       ><svg
         class="w-4 h-full"
