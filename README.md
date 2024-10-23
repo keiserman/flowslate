@@ -2,4 +2,4 @@
 
 A Webflow component library.
 
-[View site](https://keiserman.github.io/flowslate/)
+[View site](https://flowslate.netlify.app/)
