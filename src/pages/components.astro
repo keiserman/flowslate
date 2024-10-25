@@ -25,7 +25,11 @@ const components = await getCollection("components");
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {
             components.map((component) => (
-              <Card title={component.data.title} image={component.data.image} />
+              <Card
+                title={component.data.title}
+                image={component.data.image}
+                json={component.data.json}
+              />
             ))
           }
         </div>

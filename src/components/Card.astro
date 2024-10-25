@@ -1,9 +1,8 @@
 ---
-import Button from "../components/Button.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
-const { image, title } = Astro.props;
+const { image, title, json } = Astro.props;
 ---
 
 <div
@@ -16,13 +15,34 @@ const { image, title } = Astro.props;
   />
   <div class="text-2xl mb-3">{title}</div>
   <div class="flex gap-2">
-    <Button
-      text="Copy this component"
-      variant="secondary"
-      class="grow flex justify-center"
-    />
+    <button class="copy-btn" data-json={json}> Copy Text </button>
     <a href="#" class="bg-zinc-100 p-4 rounded-lg">
       <Icon name="ph:eye" />
     </a>
   </div>
 </div>
+
+<script>
+  const copyText = (text) => {
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          alert("Text copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy text: ", err);
+        });
+    } else {
+      console.error("Clipboard API not supported");
+    }
+  };
+
+  const copyButton = document.querySelector(".copy-btn");
+
+  copyButton?.addEventListener("click", () => {
+    const textToCopy = copyButton.getAttribute("data-json");
+
+    copyText(textToCopy);
+  });
+</script>
