@@ -1,39 +1,28 @@
 ---
-import Button from "./Button.astro";
+import Button from "../components/Button.astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
-const { title, url } = Astro.props;
+const { image, title } = Astro.props;
 ---
 
 <div
   class="p-4 border bg-white border-zinc-300 rounded-lg hover:shadow-sm transition"
 >
-  <img src="" alt="" class="aspect-video bg-zinc-100 mb-4 rounded-md" />
-  <div class="text-2xl mb-3">
-    {title}
-  </div>
+  <Image
+    src={image}
+    alt={title}
+    class="aspect-video w-full bg-zinc-100 object-contain object-top rounded-sm p-2"
+  />
+  <div class="text-2xl mb-3">{title}</div>
   <div class="flex gap-2">
-    <Button text="Copy this component" variant="secondary" />
-    <a href={url} class="button"
-      ><svg
-        class="w-4 h-full"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 256 256"
-        ><rect width="256" height="256" fill="none"></rect><path
-          d="M128,56C48,56,16,128,16,128s32,72,112,72,112-72,112-72S208,56,128,56Z"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"></path><circle
-          cx="128"
-          cy="128"
-          r="40"
-          fill="none"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="16"></circle></svg
-      ></a
-    >
+    <Button
+      text="Copy this component"
+      variant="secondary"
+      class="grow flex justify-center"
+    />
+    <a href="#" class="bg-zinc-100 p-4 rounded-lg">
+      <Icon name="ph:eye" />
+    </a>
   </div>
 </div>

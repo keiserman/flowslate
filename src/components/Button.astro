@@ -1,5 +1,5 @@
 ---
-const { text, variant } = Astro.props;
+const { text, variant, class: className } = Astro.props;
 const isSecondary = variant === "secondary";
 ---
 
@@ -8,8 +8,7 @@ const isSecondary = variant === "secondary";
     isSecondary
       ? "bg-transparent text-zinc-600 dark:text-zinc-100 border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:border-zinc-100 dark:hover:text-zinc-900 hover:shadow-md"
       : "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 border-none dark:hover:bg-zinc-200 hover:shadow-md"
-  }`}
-  data-value={text}
+  } ${className || ""}`}
 >
   {text}
   <slot />

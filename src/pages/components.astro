@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-const components = await Astro.glob("./library/*.md");
+import { getCollection } from "astro:content";
+
+const components = await getCollection("components");
 ---
 
 <Layout title="Components">
@@ -23,7 +25,7 @@ const components = await Astro.glob("./library/*.md");
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {
             components.map((component) => (
-              <Card title={component.frontmatter.title} url={component.url} />
+              <Card title={component.data.title} image={component.data.image} />
             ))
           }
         </div>
