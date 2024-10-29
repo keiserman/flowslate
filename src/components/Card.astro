@@ -6,17 +6,17 @@ const { image, title, json } = Astro.props;
 ---
 
 <div
-  class="p-4 border bg-white border-zinc-300 rounded-lg hover:shadow-sm transition"
+  class="p-4 border bg-white border-gray-300 rounded-lg hover:shadow-sm transition"
 >
   <Image
     src={image}
     alt={title}
-    class="aspect-video w-full bg-zinc-100 object-contain object-top rounded-sm p-2"
+    class="aspect-video w-full bg-gray-100 object-contain object-top rounded-sm p-2"
   />
   <div class="text-2xl mb-3">{title}</div>
   <div class="flex gap-2">
     <button class="copy-btn" data-json={json}> Copy Text </button>
-    <a href="#" class="bg-zinc-100 p-4 rounded-lg">
+    <a href="#" class="bg-gray-100 p-4 rounded-lg">
       <Icon name="ph:eye" />
     </a>
   </div>
