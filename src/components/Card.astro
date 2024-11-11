@@ -1,21 +1,25 @@
 ---
 import { Icon } from "astro-icon/components";
-import { Image } from "astro:assets";
+import Button from "./Button.astro";
 
 const { image, title, json } = Astro.props;
 ---
 
 <div
-  class="p-4 border bg-white border-gray-300 rounded-lg hover:shadow-sm transition"
+  class="flex flex-col gap-4 p-4 border bg-white border-gray-300 rounded-lg hover:shadow-sm transition"
 >
-  <Image
+  <img
     src={image}
     alt={title}
-    class="aspect-video w-full bg-gray-100 object-contain object-top rounded-sm p-2"
+    class="aspect-video w-full bg-gray-100 object-contain object-top rounded p-3"
   />
-  <div class="text-2xl mb-3">{title}</div>
+  <div class="text-2xl">{title}</div>
   <div class="flex gap-2">
-    <button class="copy-btn" data-json={json}> Copy Text </button>
+    <Button
+      text="Copy this component"
+      variant="secondary"
+      class="grow justify-center"
+    />
     <a href="#" class="bg-gray-100 p-4 rounded-lg">
       <Icon name="ph:eye" />
     </a>
