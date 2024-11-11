@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Button from "./Button.astro";
 
-const { image, title, json } = Astro.props;
+const { image, title } = Astro.props;
 ---
 
 <div
@@ -25,28 +25,3 @@ const { image, title, json } = Astro.props;
     </a>
   </div>
 </div>
-
-<script>
-  const copyText = (text) => {
-    if (navigator.clipboard) {
-      navigator.clipboard
-        .writeText(text)
-        .then(() => {
-          alert("Text copied to clipboard!");
-        })
-        .catch((err) => {
-          console.error("Failed to copy text: ", err);
-        });
-    } else {
-      console.error("Clipboard API not supported");
-    }
-  };
-
-  const copyButton = document.querySelector(".copy-btn");
-
-  copyButton?.addEventListener("click", () => {
-    const textToCopy = copyButton.getAttribute("data-json");
-
-    copyText(textToCopy);
-  });
-</script>

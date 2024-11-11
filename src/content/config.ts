@@ -5,7 +5,7 @@ const components = defineCollection({
     title: z.string(),
     description: z.string(),
     image: z.string(),
-    category: z.array(z.enum(["Hero", "Navbar", "Footer"])),
+    category: z.string(),
     json: z.string(),
   }),
 });
