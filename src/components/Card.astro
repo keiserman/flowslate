@@ -2,7 +2,7 @@
 import { Icon } from "astro-icon/components";
 import Button from "./Button.astro";
 
-const { image, title } = Astro.props;
+const { image, title, json } = Astro.props;
 ---
 
 <div
@@ -19,9 +19,46 @@ const { image, title } = Astro.props;
       text="Copy this component"
       variant="secondary"
       class="grow justify-center"
+      data-json={json}
     />
     <a href="#" class="bg-gray-100 p-4 rounded-lg">
       <Icon name="ph:eye" />
     </a>
   </div>
 </div>
+<script>
+  const copyButtons = document.querySelectorAll("[data-json]");
+
+  let jsonSnippetToCopy = "";
+
+  document.addEventListener("copy", function (event) {
+    if (jsonSnippetToCopy) {
+      event.clipboardData.setData("application/json", jsonSnippetToCopy);
+      event.preventDefault();
+      jsonSnippetToCopy = "";
+    }
+  });
+
+  copyButtons.forEach((button) => {
+    let copyContent = button.getAttribute("data-json");
+
+    button.onclick = function () {
+      try {
+        jsonSnippetToCopy = JSON.stringify(JSON.parse(copyContent));
+
+        document.execCommand("copy");
+
+        button.innerText = "Copied to clipboard";
+        changeButtonText(button);
+      } catch (err) {
+        console.error("Failed to parse JSON: ", err);
+      }
+    };
+  });
+
+  function changeButtonText(button) {
+    setTimeout(() => {
+      button.innerText = "Copy this element";
+    }, 1000);
+  }
+</script>
