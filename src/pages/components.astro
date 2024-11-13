@@ -1,9 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import { getCollection } from "astro:content";
-
-const components = await getCollection("components");
+import ComponentList from "../components/ComponentList.astro";
 ---
 
 <Layout title="Components">
@@ -18,22 +15,7 @@ const components = await getCollection("components");
             all of the classes sync up.
           </p>
         </div>
-        <input
-          type="text"
-          placeholder="Search for a component"
-          class="border border-gray-300 p-4 rounded-lg w-full mb-4"
-        />
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {
-            components.map((component) => (
-              <Card
-                title={component.data.title}
-                image={component.data.image}
-                json={component.data.json}
-              />
-            ))
-          }
-        </div>
+        <ComponentList />
       </div>
     </div>
   </section>
