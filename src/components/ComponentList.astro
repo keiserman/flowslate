@@ -64,16 +64,17 @@ const categories = Array.from(
   });
 
   copyButtons.forEach((button) => {
-    let copyContent = button.getAttribute("data-json");
+    const htmlButton = button as HTMLElement;
+    let copyContent = htmlButton.getAttribute("data-json");
 
-    button.onclick = function () {
+    htmlButton.onclick = function () {
       try {
-        jsonSnippetToCopy = JSON.stringify(JSON.parse(copyContent));
+        let jsonSnippetToCopy = JSON.stringify(JSON.parse(copyContent!)); // The '!' asserts that copyContent is not null
 
         document.execCommand("copy");
 
-        button.innerText = "Copied to clipboard";
-        changeButtonText(button);
+        htmlButton.innerText = "Copied to clipboard";
+        changeButtonText(htmlButton);
       } catch (err) {
         console.error("Failed to parse JSON: ", err);
       }

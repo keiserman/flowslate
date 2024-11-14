@@ -3,7 +3,7 @@ const { text, variant, class: className, ...rest } = Astro.props;
 const isSecondary = variant === "secondary";
 ---
 
-<button
+<a
   class={`px-4 py-3 rounded-lg flex items-center gap-2 leading-none shadow-sm transition ${
     isSecondary
       ? "bg-transparent text-gray-600 dark:text-gray-100 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:border-gray-100 dark:hover:text-gray-900 hover:shadow-md"
@@ -13,4 +13,4 @@ const isSecondary = variant === "secondary";
 >
   {text}
   <slot />
-</button>
+</a>
