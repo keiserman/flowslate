@@ -1,6 +1,4 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import "@fontsource-variable/inter";
 
 interface Props {
@@ -18,21 +16,21 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>FlowSlate - {title}</title>
+    <title>FlowStateUI - {title}</title>
   </head>
   <body>
-    <Header />
-    <main><slot /></main>
-    <Footer />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
 <style is:global>
   h1 {
-    @apply text-4xl md:text-5xl font-semibold;
+    @apply text-4xl font-semibold md:text-5xl;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-semibold;
+    @apply text-3xl font-semibold md:text-4xl;
   }
 
   .padding-global {
@@ -40,11 +38,11 @@ const { title } = Astro.props;
   }
 
   .container {
-    @apply max-w-screen-xl m-auto;
+    @apply m-auto max-w-screen-xl;
   }
 
   .section {
-    @apply md:py-32 py-14;
+    @apply py-14 md:py-32;
   }
 
   .nav-link {
@@ -52,6 +50,18 @@ const { title } = Astro.props;
   }
 
   .icon {
-    @apply size-10 p-2 bg-gray-100 dark:text-gray-300 dark:bg-gray-800 rounded-md;
+    @apply size-10 rounded-md bg-gray-100 p-2 dark:bg-gray-800 dark:text-gray-300;
+  }
+
+  .btn {
+    @apply flex gap-2 rounded-lg border px-4 py-3 text-base leading-none shadow-sm;
+  }
+
+  .btn-primary {
+    @apply btn border-gray-900 bg-gray-900 text-white transition hover:bg-gray-800;
+  }
+
+  .btn-secondary {
+    @apply btn border-gray-300 bg-white text-gray-900 transition hover:bg-gray-50;
   }
 </style>

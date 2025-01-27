@@ -1,101 +1,60 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from "../components/Button.astro";
+import ComponentList from "../components/ComponentList.astro";
 import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const components = await getCollection("components");
+const categories = Array.from(
+  new Set(components.map((component) => component.data.category))
+);
 ---
 
-<Layout title="Home">
-  <section class="section">
-    <div class="padding-global">
-      <div class="container">
-        <div class="max-w-2xl m-auto text-center">
-          <h1 class="mb-6">Clean slate for your next webflow project</h1>
-          <p class="mb-8 text-base text-gray-600">
-            Kickstart your Webflow projects with a collection of clean, unstyled
-            components. Copy, paste, and build faster—your clean slate is here.
-          </p>
-          <div class="flex items-center justify-center gap-3">
-            <Button text="Sign up for free" />
-            <Button text="Explore the Library" variant="secondary" />
-          </div>
+<Layout title="Components">
+  <div
+    class="grid grid-cols-[max-content_1fr] grid-rows-[max-content_1fr] h-screen"
+  >
+    <div
+      class="col-span-2 py-4 px-4 border-b border-gray-200 flex items-center justify-between gap-6"
+    >
+      <div class="flex items-center gap-6 grow">
+        <div class="logo text-2xl">
+          FlowState<sup class="text-sm text-gray-500">UI</sup>
+        </div>
+        <div
+          class="flex items-center gap-2 text-base border border-gray-300 px-4 py-3 rounded-lg shadow-sm bg-white leading-none max-w-lg w-full"
+        >
+          <Icon name="ph:magnifying-glass" class="text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search for a component..."
+            class="w-full"
+          />
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-4">
+        <a href="" class="text-base text-gray-700">Home</a>
+        <a href="" class="text-base text-gray-700">Library</a>
+        <div class="flex items-center gap-2">
+          <a href="" class="btn btn-secondary">Login</a>
         </div>
       </div>
     </div>
-  </section>
-  <section>
-    <div class="padding-global">
-      <div
-        class="container grid md:grid-cols-2 grid-cols-1 items-center gap-6 p-10 bg-gray-50 rounded-lg"
+    <div class="flex gap-4 flex-col p-4 border-r border-gray-200">
+      <a href="" class="btn btn-primary"
+        ><Icon name="ph:copy" />Copy the style guide</a
       >
-        <div class="flex flex-col gap-6 items-start">
-          <h2>A Faster Way to Build</h2>
-          <p class="text-base text-gray-600">
-            FlowSlate gives you access to a comprehensive, searchable library of
-            essential Webflow components like navbars, hero sections, grids,
-            sliders, footers, and more. All components follow Finsweet’s
-            Client-First class structure, ensuring a seamless development
-            experience from start to finish.
-          </p>
-          <Button text="Learn more" variant="secondary" />
-        </div>
-        <img
-          src=""
-          alt=""
-          class="aspect-square w-full h-full bg-gray-100 rounded-md"
-        />
-      </div>
+      <select name="categories" class="btn btn-secondary w-full">
+        <option value="">All Categories</option>
+        {
+          categories.map((category) => (
+            <option value={category}>{category}</option>
+          ))
+        }
+      </select>
     </div>
-  </section>
-
-  <section class="section">
-    <div class="padding-global">
-      <div class="container grid gap-14">
-        <div class="text-center grid gap-6">
-          <h2>Features Built for Speed and Flexibility</h2>
-          <p class="text-base text-gray-600 max-w-xl m-auto">
-            Our unstyled components, powerful search feature, and Client-First
-            structure make it simple to build faster, more organized Webflow
-            sites.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-3 grid-cols-1 gap-6">
-          <div
-            class="p-6 border border-gray-300 rounded-lg flex flex-col gap-4"
-          >
-            <Icon name="ph:paint-brush" class="icon" />
-            <div class="text-lg font-semibold">
-              Minimal Styling, Maximum Flexibility
-            </div>
-            <p class="text-base text-gray-600">
-              Each component is designed with minimal styling, giving you full
-              creative freedom. Start with a clean foundation, then customize to
-              match your brand.
-            </p>
-          </div>
-          <div
-            class="p-6 border border-gray-300 rounded-lg flex flex-col gap-4"
-          >
-            <Icon name="ph:magnifying-glass" class="icon" />
-            <div class="text-lg font-semibold">Search and Filter with Ease</div>
-            <p class="text-base text-gray-600">
-              Quickly find exactly what you need. FlowSlate’s searchable library
-              and filters help you browse components efficiently, so you can
-              spend less time searching and more time building.
-            </p>
-          </div>
-          <div
-            class="p-6 border border-gray-300 rounded-lg flex flex-col gap-4"
-          >
-            <Icon name="ph:code" class="icon" />
-            <div class="text-lg font-semibold">Built for Client-First</div>
-            <p class="text-base text-gray-600">
-              Every component follows Finsweet’s Client-First class naming
-              convention, so it’s easy to integrate into your projects without
-              missing a beat.
-            </p>
-          </div>
-        </div>
-      </div>
+    <div class="p-4">
+      <ComponentList />
     </div>
-  </section>
+  </div>
 </Layout>

@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
-import Button from "./Button.astro";
 
 const components = await getCollection("components");
 const categories = Array.from(
@@ -9,42 +8,30 @@ const categories = Array.from(
 );
 ---
 
-<div class="grid sm:grid-cols-2 gap-4 mb-4">
-  <input
-    type="text"
-    placeholder="Search for a component"
-    class="border border-gray-300 p-4 rounded-lg w-full"
-  />
-
-  <select
-    name="categories"
-    class="border border-gray-300 p-4 rounded-lg w-full"
-  >
-    <option value="">All Categories</option>
-    {categories.map((category) => <option value={category}>{category}</option>)}
-  </select>
-</div>
-
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   {
     components.map((component) => (
-      <div class="flex flex-col gap-4 p-4 border bg-white border-gray-300 rounded-lg hover:shadow-sm transition">
+      <div class="bg-white border border-gray-300 rounded-lg hover:shadow-sm transition overflow-hidden">
         <img
           src={component.data.image}
           alt={component.data.title}
-          class="aspect-video w-full bg-gray-100 object-contain object-top rounded p-3"
+          class="aspect-video w-full bg-gray-100 object-contain object-top p-4"
         />
-        <div class="text-2xl">{component.data.title}</div>
-        <div class="flex gap-2">
-          <Button
-            text="Copy this component"
-            variant="secondary"
-            class="grow justify-center"
-            data-json={component.data.json}
-          />
-          <a href="#" class="bg-gray-100 p-4 rounded-lg">
-            <Icon name="ph:eye" />
-          </a>
+        <div class="flex gap-2 flex-col p-4">
+          <div class="text-2xl">{component.data.title}</div>
+          <div class="flex gap-2">
+            <a
+              href=""
+              class="btn btn-secondary grow text-center justify-center"
+              data-json={component.data.json}
+            >
+              <Icon name="ph:copy" />
+              Copy this component
+            </a>
+            <a href="" class="btn btn-secondary">
+              <Icon name="ph:eye" />
+            </a>
+          </div>
         </div>
       </div>
     ))
